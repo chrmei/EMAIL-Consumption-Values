@@ -39,8 +39,8 @@ def setup_logging() -> None:
     # Remove existing handlers
     root_logger.handlers.clear()
 
-    # Add console handler (stderr)
-    console_handler = logging.StreamHandler(sys.stderr)
+    # Add console handler (stdout) for container/Kestra compatibility
+    console_handler = logging.StreamHandler(sys.stdout)
     console_handler.setLevel(log_level)
     console_handler.setFormatter(formatter)
     root_logger.addHandler(console_handler)
