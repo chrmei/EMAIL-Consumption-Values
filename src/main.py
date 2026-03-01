@@ -85,9 +85,7 @@ def main() -> int:
 
         if not raw_messages:
             logger.warning("No consumption messages found")
-            return (
-                2  # Exit code 2: no message found (already processed or not available)
-            )
+            return 0  # Success: nothing to do (already processed or not available)
 
         logger.info("Found %d candidate consumption message(s)", len(raw_messages))
         new_messages = []
@@ -120,7 +118,7 @@ def main() -> int:
 
         if not new_messages:
             logger.info("All fetched messages were already processed")
-            return 2  # Exit code 2: no new messages
+            return 0  # Success: nothing to do (no new messages)
 
         # Send emails for newly saved messages.
         logger.info(
